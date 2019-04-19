@@ -10,13 +10,13 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 @Data
 public class FoundationProperties {
 
-    private boolean enabled;
+    private boolean enabled = true;
 
-    private Web web;
+    private Web web = new Web();
 
     @Data
     public static class Web {
-        private boolean globalExceptionHandlerEnabled;
+        private boolean globalExceptionHandlerEnabled = true;
         private int defaultExceptionCode = 10000;
         private String defaultExceptionMessageTemplate = "未知错误: %s";
         private int notFoundExceptionCode = 10000;

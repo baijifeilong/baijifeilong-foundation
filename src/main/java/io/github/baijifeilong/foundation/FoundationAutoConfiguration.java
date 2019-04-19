@@ -12,13 +12,13 @@ import org.springframework.context.annotation.Import;
  * Created by BaiJiFeiLong@gmail.com at 2019-04-18 21:16
  */
 @Configuration
+@ConditionalOnProperty(value = "baijifeilong.foundation.enabled", matchIfMissing = true)
 @EnableConfigurationProperties(FoundationProperties.class)
-@ConditionalOnProperty("baijifeilong.foundation.enabled")
 @Import({RestHelper.class, CacheHelper.class})
 public class FoundationAutoConfiguration {
 
     @Configuration
-    @ConditionalOnProperty("baijifeilong.foundation.web.global-exception-handler-enabled")
+    @ConditionalOnProperty(value = "baijifeilong.foundation.web.global-exception-handler-enabled", matchIfMissing = true)
     @Import(GlobalExceptionHandler.class)
     static class GlobalExceptionHandlerConfiguration {
     }
