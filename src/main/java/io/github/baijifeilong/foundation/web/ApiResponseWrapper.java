@@ -4,7 +4,6 @@ import io.github.baijifeilong.standard.api.domain.ApiContextPage;
 import io.github.baijifeilong.standard.api.domain.ApiFailure;
 import io.github.baijifeilong.standard.api.domain.ApiPage;
 import io.github.baijifeilong.standard.api.domain.ApiSuccess;
-import io.github.baijifeilong.standard.exception.BizException;
 import org.springframework.data.domain.Page;
 
 import java.util.List;
@@ -27,23 +26,7 @@ public interface ApiResponseWrapper {
         return ApiSuccess.ofContextPage(items, previousIndex, nextIndex);
     }
 
-    default <T extends Throwable> ApiFailure failureOf(T t) {
-        return ApiFailure.of(t);
-    }
-
-    default <T extends BizException> ApiFailure failureOf(T t) {
-        return ApiFailure.of(t);
-    }
-
     default ApiFailure failureOf(int code, String message) {
         return ApiFailure.of(code, message);
-    }
-
-    default ApiFailure failureOf(int code) {
-        return ApiFailure.of(code);
-    }
-
-    default ApiFailure failureOf(String message) {
-        return ApiFailure.of(message);
     }
 }

@@ -11,11 +11,11 @@ import org.springframework.context.annotation.Import;
  */
 @Configuration
 @EnableConfigurationProperties(FoundationProperties.class)
-@ConditionalOnProperty("foundation.enabled")
+@ConditionalOnProperty("baijifeilong.foundation.enabled")
 public class FoundationAutoConfiguration {
 
     @Configuration
-    @ConditionalOnProperty("foundation.web.global-exception-handler-enabled")
+    @ConditionalOnProperty("baijifeilong.foundation.web.global-exception-handler-enabled")
     @Import(GlobalExceptionHandler.class)
     static class GlobalExceptionHandlerConfiguration {
     }

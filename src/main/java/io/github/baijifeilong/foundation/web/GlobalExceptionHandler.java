@@ -1,7 +1,8 @@
 package io.github.baijifeilong.foundation.web;
 
+import io.github.baijifeilong.foundation.FoundationProperties;
+import io.github.baijifeilong.foundation.exception.AbstractBaseException;
 import io.github.baijifeilong.standard.api.domain.ApiFailure;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -14,11 +15,20 @@ import org.springframework.web.servlet.NoHandlerFoundException;
  * SpringMVC全局异常处理
  */
 @RestControllerAdvice
-@ConditionalOnProperty("foundation.web.global-exception-handler-enabled")
 public class GlobalExceptionHandler implements ApiResponseWrapper {
+
+    private final FoundationProperties foundationProperties;
+
+    public GlobalExceptionHandler(FoundationProperties foundationProperties) {
+        this.foundationProperties = foundationProperties;
+    }
 
     /**
      * 404异常处理
+     * <p>
+     * 需要配置以下两个选项才能生效:
+     * spring.mvc.throw-exception-if-no-handler-found=true
+     * spring.resources.add-mappings=false
      *
      * @param e .
      * @return .
@@ -26,7 +36,23 @@ public class GlobalExceptionHandler implements ApiResponseWrapper {
     @ExceptionHandler(NoHandlerFoundException.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public ApiFailure processNotFoundException(NoHandlerFoundException e) {
-        return failureOf(String.format("接口(%s)未找到", e.getRequestURL()));
+        FoundationProperties.Web web = foundationProperties.getWeb();
+        return failureOf(
+                web.getNotFoundExceptionCode(),
+                String.format(web.getNotFoundExceptionMessageTemplate(), e.getRequestURL())
+        );
+    }
+
+    /**
+     * 业务异常处理
+     *
+     * @param e .
+     * @return .
+     */
+    @ExceptionHandler(AbstractBaseException.class)
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    public ApiFailure processBizException(AbstractBaseException e) {
+        return failureOf(e.getCode(), e.getMessage());
     }
 
     /**
@@ -38,6 +64,10 @@ public class GlobalExceptionHandler implements ApiResponseWrapper {
     @ExceptionHandler(Throwable.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public ApiFailure processException(Throwable e) {
-        return failureOf(e);
+        FoundationProperties.Web web = foundationProperties.getWeb();
+        return failureOf(
+                web.getDefaultExceptionCode(),
+                String.format(web.getDefaultExceptionMessageTemplate(), e.getMessage())
+        );
     }
 }
