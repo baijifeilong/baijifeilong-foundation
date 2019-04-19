@@ -15,4 +15,13 @@ abstract public class AbstractBaseException extends AbstractBizException {
     protected String getDefaultMessage() {
         return "未知错误";
     }
+
+    public AbstractBaseException(Throwable throwable, Object... args) {
+        super(throwable, args);
+    }
+
+    public AbstractBaseException(Object... args) {
+        super(args);
+    }
 }
+
