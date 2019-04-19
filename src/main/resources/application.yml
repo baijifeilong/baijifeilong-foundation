@@ -1,7 +1,8 @@
-foundation:
-  enabled: true
-  web:
-    global-exception-handler-enabled: true
+baijifeilong:
+  foundation:
+    enabled: true
+    web:
+      global-exception-handler-enabled: true
 
 spring:
   mvc:

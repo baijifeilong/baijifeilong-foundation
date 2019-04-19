@@ -1,5 +1,6 @@
 package io.github.baijifeilong.foundation;
 
+import io.github.baijifeilong.foundation.cache.CacheHelper;
 import io.github.baijifeilong.foundation.http.RestHelper;
 import io.github.baijifeilong.foundation.web.GlobalExceptionHandler;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
@@ -13,7 +14,7 @@ import org.springframework.context.annotation.Import;
 @Configuration
 @EnableConfigurationProperties(FoundationProperties.class)
 @ConditionalOnProperty("baijifeilong.foundation.enabled")
-@Import(RestHelper.class)
+@Import({RestHelper.class, CacheHelper.class})
 public class FoundationAutoConfiguration {
 
     @Configuration
