@@ -14,7 +14,7 @@
 参考:
 
 - 框架使用的接口规范 [BaijifeilongStandard](https://github.com/baijifeilong/baijifeilong-standard)
-- 框架使用示例[BaijifeilongFoundationExample](https://github.com/baijifeilong/baijifeilong-foundation-example)
+- 框架使用示例 [BaijifeilongFoundationExample](https://github.com/baijifeilong/baijifeilong-foundation-example)
 
 ## 应用到项目
 
@@ -26,7 +26,7 @@ POM示例：
         <dependency>
             <groupId>io.github.baijifeilong</groupId>
             <artifactId>baijifeilong-foundation</artifactId>
-            <version>1.2.0.RELEASE</version>
+            <version>1.2.1.RELEASE</version>
         </dependency>
     </dependencies>
 
