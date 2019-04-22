@@ -1,8 +1,8 @@
 package io.github.baijifeilong.foundation.web;
 
-import io.github.baijifeilong.standard.api.domain.ApiContextPage;
 import io.github.baijifeilong.standard.api.domain.ApiFailure;
 import io.github.baijifeilong.standard.api.domain.ApiPage;
+import io.github.baijifeilong.standard.api.domain.ApiRelativePage;
 import io.github.baijifeilong.standard.api.domain.ApiSuccess;
 import org.springframework.data.domain.Page;
 
@@ -22,8 +22,8 @@ public interface ApiResponseWrapper {
         return ApiSuccess.ofPage(t);
     }
 
-    default <T> ApiSuccess<ApiContextPage<T>> successOfContextPage(List<T> items, Object previousIndex, Object nextIndex) {
-        return ApiSuccess.ofContextPage(items, previousIndex, nextIndex);
+    default <T> ApiSuccess<ApiRelativePage<T>> successOfRelativePage(List<T> items, Object previousIndex, Object nextIndex) {
+        return ApiSuccess.ofRelativePage(items, previousIndex, nextIndex);
     }
 
     default ApiFailure failureOf(int code, String message) {

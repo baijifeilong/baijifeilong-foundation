@@ -66,7 +66,7 @@ spring:
 
 - `io.github.baijifeilong.foundation.web.ApiResponseWrapper.successOf` 成功响应
 - `io.github.baijifeilong.foundation.web.ApiResponseWrapper.successOfPage` 成功响应带分页
-- `io.github.baijifeilong.foundation.web.ApiResponseWrapper.successOfContextPage` 成功响应带上下文分页
+- `successOfRelativePage` 成功响应带上下文分页
 - `io.github.baijifeilong.foundation.web.ApiResponseWrapper.failureOf` 失败响应
 
 ### 2. 统一异常处理
@@ -103,10 +103,10 @@ spring:
 
 常用的方法:
 
-- `io.github.baijifeilong.foundation.cache.CacheHelper.take` 去缓存
+- `io.github.baijifeilong.foundation.cache.CacheHelper.take` 取缓存
 - `io.github.baijifeilong.foundation.cache.CacheHelper.put` 写缓存
 - `io.github.baijifeilong.foundation.cache.CacheHelper.takeOrPut` 取不到则写
-- `io.github.baijifeilong.foundation.cache.CacheHelper.takeOrPutWithTimeOut` 取不到则写(带TTL)
+- `takeOrPutWithTtl` 取不到则写(带TTL)
 
 ## 协议
 

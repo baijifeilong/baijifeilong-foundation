@@ -26,7 +26,7 @@ public class BaijifeilongFoundationApplication implements ApiResponseWrapper {
     @RequestMapping("/")
     public Object index() {
         System.out.println(cacheHelper);
-        Point nothing = cacheHelper.takeOrPutWithTimeOut("nothing", () -> new Point(1, 1), 1, TimeUnit.MINUTES);
+        Point nothing = cacheHelper.takeOrPutWithTtl("nothing", () -> new Point(1, 1), 1, TimeUnit.MINUTES);
         if (ThreadLocalRandom.current().nextBoolean()) {
             throw new RuntimeException("没办法");
         }

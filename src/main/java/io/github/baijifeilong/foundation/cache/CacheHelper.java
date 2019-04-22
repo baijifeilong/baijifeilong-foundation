@@ -37,13 +37,13 @@ public class CacheHelper implements InitializingBean {
         return t;
     }
 
-    public <T> T takeOrPutWithTimeOut(String key, Supplier<T> supplier, int time, TimeUnit timeUnit) {
+    public <T> T takeOrPutWithTtl(String key, Supplier<T> supplier, int time, TimeUnit timeUnit) {
         T t;
         if (hasKey(key)) {
             t = take(key);
             log.info("缓存已命中: {} => {}", key, t);
         } else {
-            t = putWithTimeout(key, supplier.get(), time, timeUnit);
+            t = putWithTtl(key, supplier.get(), time, timeUnit);
             log.info("缓存未命中,重新计算: {} => {}", key, t);
         }
         return t;
@@ -62,7 +62,7 @@ public class CacheHelper implements InitializingBean {
         return value;
     }
 
-    public <T> T putWithTimeout(String key, T value, int time, TimeUnit timeUnit) {
+    public <T> T putWithTtl(String key, T value, int time, TimeUnit timeUnit) {
         log.info("[写缓存] {} => {} ({} {})", key, value, time, timeUnit);
         redisTemplate.opsForValue().set(key, value, time, timeUnit);
         return value;
