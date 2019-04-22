@@ -1,1 +1,2 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=io.github.baijifeilong.foundation.FoundationAutoConfiguration
+org.springframework.boot.env.EnvironmentPostProcessor=io.github.baijifeilong.foundation.FoundationEnvironmentPostProcessor
