@@ -111,7 +111,7 @@ spring:
 - `io.github.baijifeilong.foundation.cache.CacheHelper.take` 取缓存
 - `io.github.baijifeilong.foundation.cache.CacheHelper.put` 写缓存
 - `io.github.baijifeilong.foundation.cache.CacheHelper.takeOrPut` 取不到则写
-- `takeOrPutWithTtl` 取不到则写(带TTL)
+- `io.github.baijifeilong.foundation.cache.CacheHelper.takeOrPutWithTtl` 取不到则写(带TTL)
 
 ## 协议
 
