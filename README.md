@@ -49,11 +49,6 @@ baijifeilong:
       not-found-exception-code: 44444
       default-exception-message-template: '服务器开小差了: %s'
       not-found-exception-message-template: '请求的接口不存在: %s'
-spring:
-  resources:
-    add-mappings: false
-  mvc:
-    throw-exception-if-no-handler-found: true
 ```
 
 ## 详解
@@ -85,6 +80,16 @@ spring:
 - `AbstractBaseException.getCode` 整数异常代码
 
 所有异常类通过`io.github.baijifeilong.standard.exception.IBizException`接口，暴露`code`与`message`两个字段
+
+对于404异常，BaijifeilongFoundation通过自动载入以下配置，输出JSON格式错误信息，覆盖了Spring的默认行为:
+
+```yaml
+spring:
+  resources:
+    add-mappings: false
+  mvc:
+    throw-exception-if-no-handler-found: true
+```
 
 ### 3. 基于OkHTTP的REST客户端封装
 
