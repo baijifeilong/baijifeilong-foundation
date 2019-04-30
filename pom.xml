@@ -10,7 +10,7 @@
     </parent>
     <groupId>io.github.baijifeilong</groupId>
     <artifactId>baijifeilong-foundation</artifactId>
-    <version>1.3.1.RELEASE</version>
+    <version>1.3.2.RELEASE</version>
     <name>BaijifeilongFoundation</name>
     <description>Baijifeilong foundation</description>
 

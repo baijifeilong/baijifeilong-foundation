@@ -17,9 +17,9 @@ public class FoundationProperties {
     @Data
     public static class Web {
         private boolean globalExceptionHandlerEnabled = true;
-        private int defaultExceptionCode = 10000;
+        private int defaultExceptionCode = 110000;
         private String defaultExceptionMessageTemplate = "未知错误: %s";
-        private int notFoundExceptionCode = 10000;
+        private int notFoundExceptionCode = 110000;
         private String notFoundExceptionMessageTemplate = "接口(%s)不存在";
     }
 }

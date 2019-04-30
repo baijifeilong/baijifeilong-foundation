@@ -8,7 +8,7 @@ import io.github.baijifeilong.standard.exception.AbstractBizException;
 abstract public class AbstractBaseException extends AbstractBizException {
     @Override
     public int getCode() {
-        return 10000;
+        return 110000;
     }
 
     @Override
